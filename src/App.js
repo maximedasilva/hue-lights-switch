@@ -25,10 +25,9 @@ function App() {
         method: 'PUT',
         body: `{"on": ${state}}`}
       ).then((data)=> data.json());
-      light.state.on = !state;
-      const test = Object.assign([], lights);
-       test.find((l) => l.id === light.id).state.on = state
-      setlights(test)
+      const l = Object.assign([],lights);
+       l.find((l) => l.id === light.id).state.on = state
+      setlights(l)
   }
   return (
     <div className="App">
