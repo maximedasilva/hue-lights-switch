@@ -1,11 +1,12 @@
 import './App.css';
 import Switch from './Switch';
 import { useEffect, useState } from 'react';
-import config from './config.json'
+import {baseURL} from './api'
+
 function App() {
   const [lights, setlights] = useState();
   useEffect(() => {
-    fetch(`http://${config.url}/api/${config.username}/lights`,{
+    fetch(`${baseURL}/lights`,{
       method: 'GET',
       }
     ).then((data)=> data.json()).then((data) =>  {
@@ -20,7 +21,7 @@ function App() {
 
   const switchLight = (light, state) => {
     console.log(state, light)
-      fetch(`http://${config.url}/api/${config.username}/lights/${light.id}/state`,{
+      fetch(`${baseURL}/lights/${light.id}/state`,{
         method: 'PUT',
         body: `{"on": ${state}}`}
       ).then((data)=> data.json());
