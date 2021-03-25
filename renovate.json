@@ -1,5 +1,22 @@
-{
-  "extends": [
-    "config:base"
+
+{ 
+	"extends": ["config:base", ":assignee(maximedasilva)"],
+  "packageRules": [
+    {
+      "packageNames": ["npm"],
+      "automerge": false
+    },
+    {
+      "depTypeList": ["devDependencies"],
+      "extends": ["schedule:weekly"]
+    },
+    {
+      "depTypeList": ["major"],
+      "extends": ["schedule:weekly"]
+    },
+    {
+      "depTypeList": ["minor"],
+      "extends": ["schedule:weekly"]
+    }
   ]
 }
