@@ -20,7 +20,6 @@ function App() {
   }, []);
 
   const switchLight = (light, state) => {
-    console.log(state, light)
       fetch(`${baseURL}/lights/${light.id}/state`,{
         method: 'PUT',
         body: `{"on": ${state}}`}
@@ -34,7 +33,6 @@ function App() {
     {lights && lights.map((light, id) => (
       <Switch name={light.name} id={light.id} on={light.state.on} switchLight={switchLight.bind(null, light)}></Switch>
     ))}
-     
     </div>
   );
 }
